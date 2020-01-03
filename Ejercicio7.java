@@ -204,27 +204,53 @@ public class Ejercicio7 {
             System.out.println("4. Leer 10 números enteros. Debemos mostrarlos en el siguiente orden: el primero, el último, el segundo, el penúltimo, el tercero, etc.");
             System.out.println("5. Leer por teclado dos tablas de 10 números enteros y mezclarlas en una tercera de la forma: el 1º de A, el 1º de B, el 2º de A, el 2º de B, etc.");
             System.out.println("6. Leer los datos correspondientes a dos tablas de 12 elementos numéricos, y mezclarlos en una tercera de la forma: 3 de la tabla A, 3 de la B, otros 3 de A, otros 3 de la B, etc.");
+            System.out.println("7. Salir");
             System.out.println();
             System.out.println("Que opcion deseas?");
             int opcion = lector.nextInt();
             //asientos_cuero.equalsIgnoreCase("si")
             if(opcion == 1){
+                System.out.println();
+                System.out.println("1. Leer 5 números (con bucle por favor, no pongáis 5 scanner consecutivos) y mostrarlos en el mismo orden introducido.");
+                System.out.println();
                 ejercicio1(); 
             }
             else if(opcion == 2){
+                System.out.println();
+                System.out.println("2. Leer 5 números y mostrarlos en orden inverso al introducido.");
+                System.out.println();
                 ejercicio2(); 
             }
             else if(opcion == 3){
+                System.out.println();
+                System.out.println("3. Leer 5 números por teclado y a continuación realizar la media de los números positivos, la media de los negativos y contar el número de ceros.");
+                System.out.println();
                 ejercicio3();
             }
             else if(opcion == 4){
+                System.out.println();
+                System.out.println("4. Leer 10 números enteros. Debemos mostrarlos en el siguiente orden: el primero, el último, el segundo, el penúltimo, el tercero, etc.");
+                System.out.println();
                 ejercicio4();
             }
             else if(opcion == 5){
+                System.out.println();
+                System.out.println("5. Leer por teclado dos tablas de 10 números enteros y mezclarlas en una tercera de la forma: el 1º de A, el 1º de B, el 2º de A, el 2º de B, etc.");
+                System.out.println();
                 ejercicio5();
             }
             else if(opcion == 6){
+                System.out.println();
+                System.out.println("6. Leer los datos correspondientes a dos tablas de 12 elementos numéricos, y mezclarlos en una tercera de la forma: 3 de la tabla A, 3 de la B, otros 3 de A, otros 3 de la B, etc.");
+                System.out.println();
                 ejercicio6();
+            }
+            else if(opcion == 7){
+                System.out.println("Hasta luego");
+                salir=true;
+            }
+            else{
+                System.out.println("La opcion no es correcta");
             }
                    
         }
