@@ -14,25 +14,29 @@ import java.util.Scanner;
 public class Ejercicio2 {
     public static void main(String[] args) {
  
-        boolean validarnumero = false;
         boolean seguircomprobando =  true;
-        int mivariable1;
+        boolean esprimo = true;
+        int j;
         
         System.out.println("Numeros que son primos hasta el 100 ");//
         
         for(int i=2;i<101;i++){
-            int j = i;
+            j = i;
             while(seguircomprobando == true){
-                for(int y=2; y<i; y++){
+                for(int y=2; y<j; y++){
                     if(j%y == 0){
-                        System.out.print(i + " ");
+                        //no son primos
+                        //System.out.print(j + " ");
+                        esprimo = false;
                         seguircomprobando=false;
                     } 
-                }
-            
-            
+                seguircomprobando = false;
+                }                      
             }
-            seguircomprobando = true;
+            if(esprimo==true){
+                System.out.print(i + " ");
+            }
+        seguircomprobando = true;
         
         }
     }
