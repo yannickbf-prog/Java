@@ -27,6 +27,8 @@ public class Practica31Cuenta {
         Yannick.reintegro(10);
         
         System.out.println(Yannick.getSaldo());
+        
+        Yannick.transferencia(Juanito, double 70.00);
     }
     
 }

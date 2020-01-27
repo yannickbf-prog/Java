@@ -83,9 +83,9 @@ public class Cuenta {
         return getSaldo()==saldoActual-cantidad;
     }
     
-    public void transferencia(String cuentaDestino, double importe){
+    public void transferencia(Cuenta C1, double importe){
         this.setSaldo(this.getSaldo()-importe);
-        
+        C1.setSaldo(C1.getSaldo()+importe);
     }
 
 }
