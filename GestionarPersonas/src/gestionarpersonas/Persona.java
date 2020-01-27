@@ -16,7 +16,7 @@ public class Persona {
     private String apellido1;
     private String apellido2;
     private int edad;
-    private Nif nif;
+    private Nif infoNif;
     private static int numpers;
 
     public Persona(String nombre, String apellido1, String apellido2, int edad, String nif) {
@@ -90,13 +90,15 @@ public class Persona {
         this.setApellido1(lector.nextLine());
         System.out.println("Escribe el segundo apellido");
         this.setApellido2(lector.nextLine());
-        System.out.println("Escribe el nif");
+        //System.out.println("Escribe el nif");
         //this.setNif(lector.nextLine());
-        System.out.println("Escribe la edad");
-        this.setEdad(lector.nextInt());
+        //System.out.println("Escribe la edad");
+        //this.setEdad(Integer.parseInt(lector.nextLine()));
         //hay que poner el nextInt al final sino no funciona
         //la solucion seria asi
         //this.setEdad(Integer.parseInt(lector.nextLine()));
+        this.infoNif.solicitarDatosNif();
+        
         lector.close();
     }
     
@@ -106,6 +108,7 @@ public class Persona {
         System.out.println("El segundo apellido es"+this.getApellido2());
         //System.out.println("El nif es "+this.getNif());
         System.out.println("La edad es "+this.getEdad());
+        this.infoNif.mostrarAtributosNif();
     }
     
 }

@@ -20,8 +20,8 @@ public class GestionarPersonas {
         Nif nifRafa=new Nif();
         rafa.solicitarDatos();
         rafa.mostrarAtributos();
-        nifRafa.solicitarDatosNif();
-        nifRafa.mostrarAtributosNif();
+        //nifRafa.solicitarDatosNif();
+        //nifRafa.mostrarAtributosNif();
         
         /*
         Persona adrian=new Persona("adrian","apellido1","apellido2",18,"nif2222");
