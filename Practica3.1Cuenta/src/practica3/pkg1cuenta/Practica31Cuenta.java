@@ -17,13 +17,13 @@ public class Practica31Cuenta {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) {//como es public se puede acceder desde fuera de la clase
         // TODO code application logic here
         ArrayList<Cuenta> arrayCuentas = new ArrayList<Cuenta>();
     
-        Cuenta Yannick=new Cuenta("Yannick", "0101", 4.3, 1000.35);
+        Cuenta Yannick=new Cuenta("Yannick", 4.3, 1000.35);
         
-        Cuenta Juanito=new Cuenta("Juanito", "1010", 4.5, 500.00);
+        Cuenta Juanito=new Cuenta("Juanito", 4.5, 500.00);
         
         arrayCuentas.add(Yannick);
         arrayCuentas.add(Juanito);
@@ -51,7 +51,7 @@ public class Practica31Cuenta {
             
             Scanner lector=new Scanner(System.in);
             
-            String cuenta;
+            int cuenta;
             double cantidad;
             boolean seguirComprobando = true;
             int i=0;
@@ -61,7 +61,7 @@ public class Practica31Cuenta {
                 case 1:
                     System.out.println("1. Ingresar dinero");
                     System.out.println("Dime tu cuenta");
-                    cuenta = lector.next();
+                    cuenta = lector.nextInt();
                     System.out.println("Dime que cantidad quieres ingresar");
                     cantidad = lector.nextDouble();
                     //cuenta.ingreso(cantidad);
@@ -69,7 +69,7 @@ public class Practica31Cuenta {
                     i=0;
                     while(seguirComprobando==true){
                         
-                        if (arrayCuentas.get(i).getNumeroCuenta().equals(cuenta)){
+                        if (arrayCuentas.get(i).getNumeroCuenta()==cuenta){
                             arrayCuentas.get(i).ingreso(cantidad);
                             System.out.println("La cantidad " + cantidad + " se ha añadido a tu cuenta. La cantidad que tienes ahora en la cuenta es " + arrayCuentas.get(i).getSaldo());
                             seguirComprobando=false;
@@ -89,14 +89,14 @@ public class Practica31Cuenta {
                 case 2:
                     System.out.println("2. Retirar dinero");
                     System.out.println("Dime tu cuenta");
-                    cuenta = lector.next();
+                    cuenta = lector.nextInt();
                     System.out.println("Dime la cantidad que deseas retirar");
                     cantidad=lector.nextDouble();
                     
                     i=0;
                     while(seguirComprobando==true){
                         
-                        if (arrayCuentas.get(i).getNumeroCuenta().equals(cuenta)){
+                        if (arrayCuentas.get(i).getNumeroCuenta()==cuenta){
                             if(arrayCuentas.get(i).reintegro(cantidad)){
                                 System.out.println("La cantidad " + cantidad + " se ha retirado de tu cuenta. La cantidad que tienes ahora en la cuenta es " + arrayCuentas.get(i).getSaldo());
                                 seguirComprobando=false;
@@ -114,9 +114,9 @@ public class Practica31Cuenta {
                 case 3:
                     System.out.println("3. Hacer transferencia");
                     System.out.println("Dime tu cuenta");
-                    String cuentaOrigen = lector.next();
+                    int cuentaOrigen = lector.nextInt();
                     System.out.println("Dime la cuenta de destion");
-                    String cuentaDestino = lector.next();
+                    int cuentaDestino = lector.nextInt();
                     System.out.println("Dime la cantidad que deseas ingresar");
                     cantidad=lector.nextDouble();
                     
@@ -124,7 +124,7 @@ public class Practica31Cuenta {
                     
                     Cuenta origenTransferencia = new Cuenta();
                     
-                    if(Cuenta.buscarCuenta(cuentaOrigen, arrayCuentas)>-1){
+                    if(Cuenta.buscarCuenta(cuentaOrigen, arrayCuentas)>-1){//le pasamos la clase por que el metodo es static
                         origenTransferencia = arrayCuentas.get(Cuenta.buscarCuenta(cuentaOrigen, arrayCuentas));
                     }
                     else{
@@ -165,15 +165,15 @@ public class Practica31Cuenta {
                 case 4:
                     System.out.println("Dime tu nombre");
                     String nombre = lector.next();
-                    System.out.println("Dime tu numero de cuenta");
-                    String numCuenta = lector.next();
+                    //System.out.println("Dime tu numero de cuenta");
+                    //String numCuenta = lector.next();
                     System.out.println("Dime tipo de interes");
                     double tipoInteres = lector.nextDouble();
                     System.out.println("Dime cuanto dinero tendras");
                     double saldoInicial = lector.nextDouble();
                     System.out.println("La cuenta se ha creado con exito");
                     
-                    Cuenta nuevaCuenta = new Cuenta(nombre, numCuenta, tipoInteres, saldoInicial);
+                    Cuenta nuevaCuenta = new Cuenta(nombre, tipoInteres, saldoInicial);
                     arrayCuentas.add(nuevaCuenta);
                 break;   
                 

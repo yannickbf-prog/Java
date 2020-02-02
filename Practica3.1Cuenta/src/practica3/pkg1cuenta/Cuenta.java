@@ -13,7 +13,8 @@ import java.util.ArrayList;
  */
 public class Cuenta {
     private String nombreCliente;
-    private String numeroCuenta;
+    private int numeroCuenta;
+    private static int numeroCuentaSiguiente=1; //al poner static aqui lo que hace es que no pertenece a ningun objeto, solo a la clase
     private double tipoIneteres;
     private double saldo;
     
@@ -21,11 +22,12 @@ public class Cuenta {
         
     }
 
-    public Cuenta(String nombreCliente, String numeroCuenta, double tipoIneteres, double saldo) {
+    public Cuenta(String nombreCliente, double tipoIneteres, double saldo) {
         this.nombreCliente = nombreCliente;
-        this.numeroCuenta = numeroCuenta;
+        this.numeroCuenta = numeroCuentaSiguiente;
         this.tipoIneteres = tipoIneteres;
         this.saldo = saldo;
+        numeroCuentaSiguiente++;
     }
     
     public Cuenta(Cuenta C1) {
@@ -39,7 +41,7 @@ public class Cuenta {
         this.nombreCliente = nombreCliente;
     }
 
-    public void setNumeroCuenta(String numeroCuenta) {
+    public void setNumeroCuenta(int numeroCuenta) {
         this.numeroCuenta = numeroCuenta;
     }
 
@@ -55,7 +57,7 @@ public class Cuenta {
         return nombreCliente;
     }
 
-    public String getNumeroCuenta() {
+    public int getNumeroCuenta() {
         return numeroCuenta;
     }
 
@@ -92,13 +94,13 @@ public class Cuenta {
         C1.setSaldo(C1.getSaldo()+importe);
     }
     
-    public static int buscarCuenta(String numCuenta, ArrayList<Cuenta> arrayCuentas){
+    public static int buscarCuenta(int numCuenta, ArrayList<Cuenta> arrayCuentas){// como es static se le tiene que pasar la clase cuando llamas al metodo
         boolean seguirComprobando = true;
         int i = 0;
         
         while(seguirComprobando==true){
                         
-            if (arrayCuentas.get(i).getNumeroCuenta().equals(numCuenta)){
+            if (arrayCuentas.get(i).getNumeroCuenta()==numCuenta){
                 return i;
                 //return guardarCuenta;
                 //seguirComprobando=false;
