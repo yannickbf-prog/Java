@@ -5,6 +5,8 @@
  */
 package practica3.pkg1cuenta;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Yann
@@ -73,19 +75,40 @@ public class Cuenta {
     }
     
     public boolean reintegro(double cantidad){
+        boolean reintegroOk=false;
         double saldoActual=this.getSaldo();
         if(saldoActual>cantidad && cantidad>0){
             this.setSaldo(saldoActual-cantidad);
+            reintegroOk=true;
         }
         else{
             System.out.println("No puedes retirar " + cantidad + " euros por que supera la cantidad que tienes en tu cuenta o no has puesto una cifra valida");
         }
-        return getSaldo()==saldoActual-cantidad;
+        return reintegroOk;
     }
     
     public void transferencia(Cuenta C1, double importe){
         this.setSaldo(this.getSaldo()-importe);
         C1.setSaldo(C1.getSaldo()+importe);
+    }
+    
+    public static int buscarCuenta(String numCuenta, ArrayList<Cuenta> arrayCuentas){
+        boolean seguirComprobando = true;
+        int i = 0;
+        
+        while(seguirComprobando==true){
+                        
+            if (arrayCuentas.get(i).getNumeroCuenta().equals(numCuenta)){
+                return i;
+                //return guardarCuenta;
+                //seguirComprobando=false;
+            }//.ingreso(cantidad);
+            if(i==arrayCuentas.size()){
+                seguirComprobando=false;
+            }
+            i++;                            
+         }
+        return -1;
     }
 
 }
