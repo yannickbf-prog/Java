@@ -16,15 +16,16 @@ public class Persona {
     private String apellido1;
     private String apellido2;
     private int edad;
-    private Nif infoNif;
+    private Nif infoNif=new Nif();
     private static int numpers;
 
-    public Persona(String nombre, String apellido1, String apellido2, int edad, String nif) {
+    public Persona(String nombre, String apellido1, String apellido2, int edad, Nif infoNifMetodo) {
         this.setNombre(nombre);
         this.apellido1 = apellido1;
         this.apellido2 = apellido2;
         this.edad = edad;
-        //this.nif = nif;
+        this.infoNif = infoNifMetodo;
+        //this.setNif(new Nif("1111111", "direccion", "nombrepadre", "nombremadre"));
         Persona.numpers++;
         
     }
@@ -40,6 +41,7 @@ public class Persona {
     }
     
     public Persona() {
+        this.setNif(new Nif());
     }
 
     public String getNombre() {
@@ -74,13 +76,13 @@ public class Persona {
         this.edad = edad;
     }
 
-    /*public String getNif() {
-        return nif;
+    public Nif getNif() {
+        return this.infoNif;
     }
 
-    public void setNif(String nif) {
-        this.nif = nif;
-    }*/
+    public void setNif(Nif nif) {
+        this.infoNif = nif;
+    }
     
     public void solicitarDatos(){
         Scanner lector=new Scanner(System.in);
@@ -107,7 +109,7 @@ public class Persona {
         System.out.println("El apellido es"+this.getApellido1());
         System.out.println("El segundo apellido es"+this.getApellido2());
         //System.out.println("El nif es "+this.getNif());
-        System.out.println("La edad es "+this.getEdad());
+        //System.out.println("La edad es "+this.getEdad());
         this.infoNif.mostrarAtributosNif();
     }
     

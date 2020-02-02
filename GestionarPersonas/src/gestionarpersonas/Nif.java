@@ -17,12 +17,12 @@ public class Nif {
     private String nombrePadre;
     private String nombreMadre;
 
-    /*public Nif(String nif, String direccion, String nombrePadre, String nombreMadre) {
+    public Nif(String nif, String direccion, String nombrePadre, String nombreMadre) {
         this.nif = nif;
         this.direccion = direccion;
         this.nombrePadre = nombrePadre;
         this.nombreMadre = nombreMadre;
-    }*/
+    }
     
     public Nif(){
     }

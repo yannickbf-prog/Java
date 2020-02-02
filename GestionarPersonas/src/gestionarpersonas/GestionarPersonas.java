@@ -17,7 +17,9 @@ public class GestionarPersonas {
     public static void main(String[] args) {
         // TODO code application logic here
         Persona rafa=new Persona();
-        Nif nifRafa=new Nif();
+        //Nif nifRafa=new Nif();
+        //p1.setNif(nifRafa);
+        //p1.getNif().solicitarDatosNif;
         rafa.solicitarDatos();
         rafa.mostrarAtributos();
         //nifRafa.solicitarDatosNif();
