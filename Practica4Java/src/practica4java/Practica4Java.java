@@ -36,6 +36,40 @@ public class Practica4Java {
         //buscarPeliculas(arrayPeliculas);
         arrayClientes.add(Yannick);
         arrayClientes.add(Juanito);
+        
+        //arrayClientes.get(1);
+        
+        Scanner lector=new Scanner(System.in);
+        
+        boolean salirMenu=false;
+        while (salirMenu==false){
+            System.out.println("=========================");
+            System.out.println("= M E N Ú =");
+            System.out.println("=========================");
+            System.out.println("1) añadir película");
+            System.out.println("2) reservar película");
+            System.out.println("3) buscar películas");
+            System.out.println("4) salir");
+            System.out.println("=========================");
+            System.out.print("¿Qué opción deseas? ");
+            int opcionMenu = lector.nextInt();
+            switch (opcionMenu){
+                case 1:
+                    añadirPelicula(arrayPeliculas);
+                break;
+                case 2:
+                    reservarPeliculas(arrayPeliculas);
+                break;
+                case 3:
+                    buscarPeliculas(arrayPeliculas);
+                break;
+                case 4:
+                    salirMenu=true;
+                break;
+                default:
+                    System.out.println("Opcion no valida");
+            }
+        }     
     }
     
     public static void añadirPelicula(ArrayList<Pelicula> arrayPeliculas){//este metodo añade objetos pelicula al arrayPeliculas 
@@ -146,7 +180,8 @@ public class Practica4Java {
             int idSocio = lector.nextInt()-1;
             System.out.println("Que pelicula quieres reservar? dime el id");
             int idPeliculaReservar = lector.nextInt()-1;//pedimos el id y le restamos 1 para que nos de la posicion en el array
-            arrayClientes.get(idSocio).setArrayPeliculasReservadasClientes(arrayPeliculas,idPeliculaReservar);
+            arrayPeliculas.get(idPeliculaReservar).setArrayClientesReservanPelicula(idSocio);
+            //arrayClientes.get(idSocio).setArrayPeliculasReservadasClientes(arrayPeliculas,idPeliculaReservar);
             if(idPeliculaReservar+1<=arrayPeliculas.size()){
                 if(arrayPeliculas.get(idPeliculaReservar).isDisponibilidad()==false){//si no esta disponible le decimos que la pelicula no esta disponible
                 System.out.println("La pelicula "+arrayPeliculas.get(idPeliculaReservar).getTitulo()+" no esta disponible");
