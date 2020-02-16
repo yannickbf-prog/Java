@@ -25,7 +25,7 @@ public class Pelicula {
     private boolean Disponibilidad;
     private int cantidadTotalCopiasPeliculas; //Cantidad de copias total del id de la película
     private int cantidadCopiasReservadas; //Cantidad de copias reservadas del id de la película
-    private Cliente clientePelicula=new Cliente();
+    //private Cliente clientePelicula=new Cliente();
     
     public Pelicula(String titulo, String director, int duracion, String genero, int año, boolean disponibilidad, int cantidadTotalCopiasPeliculas, int cantidadCopiasReservadas){
         this.Id=IdSiguiente;
@@ -40,9 +40,9 @@ public class Pelicula {
         IdSiguiente++;
     }
     
-    public Pelicula() {
+    /*public Pelicula() {
         this.setClientePelicula(new Cliente());
-    }
+    }*/
     
     public int getId() {
         return Id;
@@ -124,13 +124,13 @@ public class Pelicula {
         this.cantidadCopiasReservadas = cantidadCopiasReservadas;
     }
     
-    public Cliente getClientePelicula() {
+    /*public Cliente getClientePelicula() {
         return this.clientePelicula;
-    }
+    }*/
 
-    public void setClientePelicula(Cliente clientePelicula) {
+    /*public void setClientePelicula(Cliente clientePelicula) {
         this.clientePelicula = clientePelicula;
-    }
+    }*/
     //Scanner lector=new Scanner(System.in);
     
    

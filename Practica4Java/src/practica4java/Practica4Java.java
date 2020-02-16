@@ -145,8 +145,8 @@ public class Practica4Java {
             System.out.println("Dime tu numero de socio");
             int idSocio = lector.nextInt()-1;
             System.out.println("Que pelicula quieres reservar? dime el id");
-            arrayClientes.get(idSocio).getCantidadCopiasReservadas();//arrayClientes.get(idSocio).setArrayPeliculasReservadasClientes(1);
             int idPeliculaReservar = lector.nextInt()-1;//pedimos el id y le restamos 1 para que nos de la posicion en el array
+            arrayClientes.get(idSocio).setArrayPeliculasReservadasClientes(arrayPeliculas,idPeliculaReservar);
             if(idPeliculaReservar+1<=arrayPeliculas.size()){
                 if(arrayPeliculas.get(idPeliculaReservar).isDisponibilidad()==false){//si no esta disponible le decimos que la pelicula no esta disponible
                 System.out.println("La pelicula "+arrayPeliculas.get(idPeliculaReservar).getTitulo()+" no esta disponible");
