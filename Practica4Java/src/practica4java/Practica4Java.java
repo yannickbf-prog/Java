@@ -339,9 +339,10 @@ public class Practica4Java {
             case 1:
                 System.out.println("Dime el id de la pelicula");
                 int idPelicula = lector.nextInt()-1;
-                ArrayList<Integer> arrayClientesPelicula = new ArrayList<Integer>();
-                arrayClientesPelicula = arrayPeliculas.get(idPelicula).getArrayClientesReservanPelicula();
-                if (arrayClientesPelicula.contains(idPelicula)){ 
+                
+                if (idPelicula+1<=arrayPeliculas.size()&&(arrayPeliculas.get(idPelicula).getArrayClientesReservanPelicula().contains(idPelicula))){ 
+                    ArrayList<Integer> arrayClientesPelicula = new ArrayList<Integer>();
+                    arrayClientesPelicula = arrayPeliculas.get(idPelicula).getArrayClientesReservanPelicula();
                     for(int i=0;i<arrayClientesPelicula.size();i++){
                     //arrayClientes.get(arrayClientesPelicula.get(i));
                     System.out.println("--------------------");
@@ -354,16 +355,16 @@ public class Practica4Java {
                 }
                 else{
                     System.out.println("--------------------");
-                    System.out.println("La pelicula introducida no esta alquilada por nadie");
+                    System.out.println("La pelicula introducida no esta alquilada por nadie o no existe");
                 }
                 
             break;
             case 2:
                 System.out.println("Dime el id del cliente");
-                int idCliente = lector.nextInt()-1;
-                ArrayList<Integer> arrayPeliculasClientes = new ArrayList<Integer>();
-                arrayPeliculasClientes = arrayClientes.get(idCliente).getArrayPeliculasReservadasClientes();
-                if (arrayPeliculasClientes.contains(idCliente)){ 
+                int idCliente = lector.nextInt()-1;             
+                if (idCliente+1<=arrayClientes.size()&&arrayClientes.get(idCliente).getArrayPeliculasReservadasClientes().contains(idCliente)){ 
+                    ArrayList<Integer> arrayPeliculasClientes = new ArrayList<Integer>();
+                    arrayPeliculasClientes = arrayClientes.get(idCliente).getArrayPeliculasReservadasClientes();
                     for(int i=0;i<arrayPeliculasClientes.size();i++){
                         System.out.println("--------------------");
                         System.out.println("Resultado de la busqueda");
@@ -374,7 +375,7 @@ public class Practica4Java {
                 }
                 else{
                     System.out.println("--------------------");
-                    System.out.println("La pelicula introducida no esta alquilada por nadie");
+                    System.out.println("La pelicula introducida no esta alquilada por nadie o no existe");
                 }
             break;
             default:
