@@ -10,7 +10,7 @@ package practica4java;
  * @author Yann
  */
 
-//import java.util.ArrayList;
+import java.util.ArrayList;
 //import java.util.Scanner;
 
 
@@ -26,7 +26,7 @@ public class Pelicula {
     private int cantidadTotalCopiasPeliculas; //Cantidad de copias total del id de la película
     private int cantidadCopiasReservadas; //Cantidad de copias reservadas del id de la película
     //private Cliente clientePelicula=new Cliente();
-    private int[] arrayClientesReservanPelicula;
+    private ArrayList<Integer> arrayClientesReservanPelicula = new ArrayList<Integer>();
     
     public Pelicula(String titulo, String director, int duracion, String genero, int año, boolean disponibilidad, int cantidadTotalCopiasPeliculas, int cantidadCopiasReservadas){
         this.Id=IdSiguiente;
@@ -134,9 +134,11 @@ public class Pelicula {
     }*/
     //Scanner lector=new Scanner(System.in);
 
-    public int[] getArrayClientesReservanPelicula() {
+    public ArrayList<Integer> getArrayClientesReservanPelicula() {
         return arrayClientesReservanPelicula;
     }
+
+   
 
     public void setArrayClientesReservanPelicula(int idCliente) {//este id es 1- del verdadero para que se corresponda con la posicion en el array
         this.arrayClientesReservanPelicula.add(idCliente);   

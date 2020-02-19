@@ -16,7 +16,7 @@ public class Cliente {
     private static int IdClienteSiguiente=1;
     private String nombre;
     private String apellidos;
-    private ArrayList<Pelicula> arrayPeliculasReservadasClientes = new ArrayList<Pelicula>();
+    private ArrayList<Integer> arrayPeliculasReservadasClientes = new ArrayList<Integer>();
 
     public Cliente(String nombre, String apellidos) {
         this.IdCliente = IdClienteSiguiente;
@@ -60,12 +60,12 @@ public class Cliente {
         this.apellidos = apellidos;
     }
 
-    public ArrayList<Pelicula> getArrayPeliculasReservadasClientes() {
+    public ArrayList<Integer> getArrayPeliculasReservadasClientes() {
         return arrayPeliculasReservadasClientes;
     }
 
-    public void setArrayPeliculasReservadasClientes(ArrayList<Pelicula> arrayPeliculas, int posicion) {
-        this.arrayPeliculasReservadasClientes.add(arrayPeliculas.get(posicion));
+    public void setArrayPeliculasReservadasClientes(int posicionPelicula) {
+        this.arrayPeliculasReservadasClientes.add(posicionPelicula);
     }
     
     

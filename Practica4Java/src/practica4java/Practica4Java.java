@@ -23,8 +23,8 @@ public class Practica4Java {
         ArrayList<Cliente> arrayClientes = new ArrayList<Cliente>();
         //ArrayList<Pelicula> arrayPeliculasReservadasClientes = new ArrayList<Pelicula>();
         
-        Pelicula ElPadrino = new Pelicula("El Padrino", "Ford Coppola", 180, "Drama", 1990, true, 2995, 20);
-        Pelicula ElPadrino2 = new Pelicula("El Padrino2", "Ford Coppola", 180, "Drama", 1995, false, 17, 16);
+        Pelicula ElPadrino = new Pelicula("El Padrino", "Ford Coppola", 180, "Drama", 1990, true, 15, 20);
+        Pelicula ElPadrino2 = new Pelicula("El Padrino2", "Ford Coppola", 180, "Drama", 1995, true, 17, 16);
         
         arrayPeliculas.add(ElPadrino);
         arrayPeliculas.add(ElPadrino2);
@@ -49,7 +49,8 @@ public class Practica4Java {
             System.out.println("1) añadir película");
             System.out.println("2) reservar película");
             System.out.println("3) buscar películas");
-            System.out.println("4) salir");
+            System.out.println("4) consultar clientes que tienen una pelicula alquilada y que peliculas tiene alquilada un cliente");
+            System.out.println("5) salir");
             System.out.println("=========================");
             System.out.print("¿Qué opción deseas? ");
             int opcionMenu = lector.nextInt();
@@ -58,12 +59,15 @@ public class Practica4Java {
                     añadirPelicula(arrayPeliculas);
                 break;
                 case 2:
-                    reservarPeliculas(arrayPeliculas);
+                    reservarPeliculas(arrayPeliculas, arrayClientes);
                 break;
                 case 3:
                     buscarPeliculas(arrayPeliculas);
                 break;
                 case 4:
+                    clientesPeliculaAlquilada(arrayPeliculas, arrayClientes);
+                break;
+                case 5:
                     salirMenu=true;
                 break;
                 default:
@@ -171,7 +175,7 @@ public class Practica4Java {
         return contarTotalPeliculas;
     }
     
-    private static void reservarPeliculas(ArrayList<Pelicula> arrayPeliculas){//con este metodo reservamos peliculas
+    private static void reservarPeliculas(ArrayList<Pelicula> arrayPeliculas, ArrayList<Cliente> arrayClientes){//con este metodo reservamos peliculas
         Scanner lector=new Scanner(System.in);
         listarPeliculas(arrayPeliculas);//listamos todas las peliculas con el metodo listarPeliculas();
         boolean volverPreguntarPelicula = true;
@@ -180,7 +184,7 @@ public class Practica4Java {
             int idSocio = lector.nextInt()-1;
             System.out.println("Que pelicula quieres reservar? dime el id");
             int idPeliculaReservar = lector.nextInt()-1;//pedimos el id y le restamos 1 para que nos de la posicion en el array
-            arrayPeliculas.get(idPeliculaReservar).setArrayClientesReservanPelicula(idSocio);
+            
             //arrayClientes.get(idSocio).setArrayPeliculasReservadasClientes(arrayPeliculas,idPeliculaReservar);
             if(idPeliculaReservar+1<=arrayPeliculas.size()){
                 if(arrayPeliculas.get(idPeliculaReservar).isDisponibilidad()==false){//si no esta disponible le decimos que la pelicula no esta disponible
@@ -189,6 +193,8 @@ public class Practica4Java {
                 else{//si la pelicula esta disponoble mostramos un mensaje diciendole que ha sido reservada y sumaremos 1 numero al total de copias reservadas, si este numero es igual al numero de copias disponibles le pasaremos la disponibilidad a false
                     System.out.println("La pelicula "+arrayPeliculas.get(idPeliculaReservar).getTitulo()+" ha sido reservada");
                     arrayPeliculas.get(idPeliculaReservar).setCantidadCopiasReservadas(arrayPeliculas.get(idPeliculaReservar).getCantidadCopiasReservadas()+1);
+                    arrayPeliculas.get(idPeliculaReservar).setArrayClientesReservanPelicula(idSocio);//con esta linea añadimos a la pelicula que esta en el arrayPeliculas, los clientes que tienen reservada esa pelicula en una array de el objeto pelicula
+                    arrayClientes.get(idSocio).setArrayPeliculasReservadasClientes(idPeliculaReservar);//con esta linea añadimos a el cliente que esta en el arrayClientes, las peliculas que tienen reservadas en un array de el objeto cliente
                     if(arrayPeliculas.get(idPeliculaReservar).getCantidadCopiasReservadas()==arrayPeliculas.get(idPeliculaReservar).getCantidadTotalCopiasPeliculas()){
                         arrayPeliculas.get(idPeliculaReservar).setDisponibilidad(false);
                     }
@@ -258,7 +264,7 @@ public class Practica4Java {
                     System.out.println("--------------------");
                 }
                 else{
-                    System.out.println("No se han encontrado resultados");
+                    System.out.println("No se han encontrado resultados para ese id de pelicula");
                 }
                 
             break;  
@@ -271,7 +277,7 @@ public class Practica4Java {
                     listarPeliculasMedianteBusqueda(resultadosEncontrados, arrayPeliculas, i, comparacionBusquedaPelicula);
                 }
                 if(resultadosEncontrados==false){
-                    System.out.println("No se han encontrado resultados");
+                    System.out.println("No se han encontrado resultados para ese titulo de pelicula");
                 }
             break;
             case 3:
@@ -283,7 +289,7 @@ public class Practica4Java {
                     listarPeliculasMedianteBusqueda(resultadosEncontrados, arrayPeliculas, i, comparacionBusquedaPelicula);
                 }
                 if(resultadosEncontrados==false){
-                    System.out.println("No se han encontrado resultados");
+                    System.out.println("No se han encontrado resultados para ese director");
                 }
             break;
             case 4:
@@ -295,7 +301,7 @@ public class Practica4Java {
                     listarPeliculasMedianteBusqueda(resultadosEncontrados, arrayPeliculas, i, comparacionBusquedaPelicula);              
                 }
                 if(resultadosEncontrados==false){
-                    System.out.println("No se han encontrado resultados");
+                    System.out.println("No se han encontrado resultados para ese genero");
                 }
             break;
         }
@@ -320,5 +326,60 @@ public class Practica4Java {
             }
             System.out.println("--------------------");
         }
+    }
+    public static void clientesPeliculaAlquilada(ArrayList<Pelicula> arrayPeliculas, ArrayList<Cliente> arrayClientes){
+        Scanner lector=new Scanner(System.in);
+        System.out.println("--------------------");
+        System.out.println("1) Consultar clientes que tienen una pelicula alquilada");
+        System.out.println("2) Consultar peliculas que tiene un cliente alquiladas");
+        System.out.println("--------------------");
+        System.out.print("Dime que opcion deseas ");
+        int opcion = lector.nextInt();
+        switch (opcion){
+            case 1:
+                System.out.println("Dime el id de la pelicula");
+                int idPelicula = lector.nextInt()-1;
+                ArrayList<Integer> arrayClientesPelicula = new ArrayList<Integer>();
+                arrayClientesPelicula = arrayPeliculas.get(idPelicula).getArrayClientesReservanPelicula();
+                if (arrayClientesPelicula.contains(idPelicula)){ 
+                    for(int i=0;i<arrayClientesPelicula.size();i++){
+                    //arrayClientes.get(arrayClientesPelicula.get(i));
+                    System.out.println("--------------------");
+                    System.out.println("Resultado de la busqueda");
+                    System.out.println("--------------------");
+                    System.out.println("Id cliente: "+arrayClientes.get(arrayClientesPelicula.get(i)).getIdCliente());
+                    System.out.println("Nombre cliente: "+arrayClientes.get(arrayClientesPelicula.get(i)).getNombre());
+                    System.out.println("Apellidos cliente: "+arrayClientes.get(arrayClientesPelicula.get(i)).getApellidos());
+                    }
+                }
+                else{
+                    System.out.println("--------------------");
+                    System.out.println("La pelicula introducida no esta alquilada por nadie");
+                }
+                
+            break;
+            case 2:
+                System.out.println("Dime el id del cliente");
+                int idCliente = lector.nextInt()-1;
+                ArrayList<Integer> arrayPeliculasClientes = new ArrayList<Integer>();
+                arrayPeliculasClientes = arrayClientes.get(idCliente).getArrayPeliculasReservadasClientes();
+                if (arrayPeliculasClientes.contains(idCliente)){ 
+                    for(int i=0;i<arrayPeliculasClientes.size();i++){
+                        System.out.println("--------------------");
+                        System.out.println("Resultado de la busqueda");
+                        System.out.println("--------------------");
+                        System.out.println("Id pelicula: "+arrayPeliculas.get(arrayPeliculasClientes.get(i)).getId());
+                        System.out.println("Nombre pelicula: "+arrayPeliculas.get(arrayPeliculasClientes.get(i)).getTitulo());
+                    }
+                }
+                else{
+                    System.out.println("--------------------");
+                    System.out.println("La pelicula introducida no esta alquilada por nadie");
+                }
+            break;
+            default:
+                System.out.println("No has introducido una opcion correcta, escribe 1 o 2");
+        }
+        
     }
 }
