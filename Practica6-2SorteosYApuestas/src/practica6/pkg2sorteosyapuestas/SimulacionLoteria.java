@@ -18,7 +18,6 @@ public class SimulacionLoteria extends Apuesta{
         System.out.println("3-Realizar simulacion");
         System.out.println("4-Salir");
         
-        
         crearApuestaPrimitiva();
     }
 }

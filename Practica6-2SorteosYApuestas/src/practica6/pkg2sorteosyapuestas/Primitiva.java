@@ -17,6 +17,8 @@ import static practica6.pkg2sorteosyapuestas.Practica62SorteosYApuestas.pedirNom
 public class Primitiva extends Apuesta{
     private int[] listaNum = new int[6];
     private int aciertos = 0;
+    private static String nombre;
+    private static String apellidos;
 
     public Primitiva() {
     }
@@ -65,16 +67,17 @@ public class Primitiva extends Apuesta{
         System.out.println("");
         System.out.println("Numero de aciertos "+this.getAciertos());
     }
-    
+   
     public static void crearApuestaPrimitiva(){
         ArrayList<Apuesta> arrayApuestas = new ArrayList<Apuesta>();
         Scanner lector = new Scanner(System.in);
-        Primitiva p1 = new Primitiva();
-        pedirNombre(lector, p1);
-        pedirApellidos(lector, p1);
+        rellenarNombrePrimitiva(lector);
+        rellenarApellidosPrimitiva(lector);
+        //System.out.println(nombre);
         System.out.println("Dime cuantas apuestas quieres hacer");
-        int numApuestas = lector.nextInt();
+        int numApuestas = Integer.parseInt(lector.nextLine());
         for(int i=0; numApuestas>i; i++){
+            Primitiva p1 = new Primitiva();
             System.out.println("Apuesta numero "+(i+1));    
             int arrayNumerosPrimitiva[] = new int[6];
             for(int j=0; j<6; j++){
@@ -82,6 +85,18 @@ public class Primitiva extends Apuesta{
                 int numeroPrimitiva = lector.nextInt();
                 arrayNumerosPrimitiva[j] = numeroPrimitiva;
             } 
+            try{
+                p1.setNombre(nombre);
+            }
+            catch(ExcepcionMayusculas ex){
+                System.out.println(ex.getMensaje());
+            }
+            try{
+                p1.setApellidos(apellidos);
+            }
+            catch(ExcepcionMayusculas ex){
+                System.out.println(ex.getMensaje());
+            }
             p1.setListaNum(arrayNumerosPrimitiva);
             arrayApuestas.add(p1);
         }
@@ -89,5 +104,35 @@ public class Primitiva extends Apuesta{
             arrayApuestas.get(i).mostrarApuesta();
         }
         
+    }
+
+    public static void rellenarNombrePrimitiva(Scanner lector){
+        
+        try{
+            System.out.println("Dime tu nombre");
+            Primitiva.nombre= lector.next();
+            if(!Primitiva.nombre.equals(Primitiva.nombre.toUpperCase())){
+                throw new ExcepcionMayusculas("El nombre ");
+            }
+        }
+        catch(ExcepcionMayusculas ex){
+            System.out.println(ex.getMensaje());
+            rellenarNombrePrimitiva(lector);
+        }        
+    }
+   
+    public static void rellenarApellidosPrimitiva(Scanner lector){
+        
+        try{
+            System.out.println("Dime tus apellidos");
+            Primitiva.apellidos= lector.nextLine();
+            if(!Primitiva.apellidos.equals(Primitiva.apellidos.toUpperCase())){
+                throw new ExcepcionMayusculas("Los apellidos ");
+            }
+        }
+        catch(ExcepcionMayusculas ex){
+            System.out.println(ex.getMensaje());
+            rellenarApellidosPrimitiva(lector);
+        }        
     }
 }

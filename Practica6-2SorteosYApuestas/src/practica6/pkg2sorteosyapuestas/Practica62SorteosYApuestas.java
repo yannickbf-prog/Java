@@ -49,7 +49,7 @@ public class Practica62SorteosYApuestas {
     public static void pedirApellidos(Scanner lector, Apuesta p1) {
         String apellidos;
         System.out.println("Dime tus apellidos");
-        apellidos = lector.next();
+        apellidos = lector.nextLine();
         try{
             p1.setApellidos(apellidos);
         }
